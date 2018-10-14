@@ -16,6 +16,15 @@ function oneaway(){
     return false;
 }
 
+function Owon(){
+    if((Ohere[1]+Ohere[2]+Ohere[3]) == 3 || (Ohere[4]+Ohere[5]+Ohere[6]) == 3 || (Ohere[7]+Ohere[8]+Ohere[9]) == 3
+        ||(Ohere[1]+Ohere[4]+Ohere[7]) == 3 || (Ohere[2]+Ohere[5]+Ohere[8]) == 3 || (Ohere[3]+Ohere[6]+Ohere[9]) == 3 ||
+        (Ohere[1]+Ohere[5]+Ohere[9]) == 3 || (Ohere[3]+Ohere[5]+Ohere[7]) == 3  ){
+        return true;
+    }
+    return false;
+}
+
 function reactOneAway(Ohere,equals){
     if((Ohere[1]+Ohere[2]+Ohere[3]) == equals){
         if(Ohere[1]==0) return 1;
@@ -61,8 +70,13 @@ function reactOneAway(Ohere,equals){
 }
 
 function computerturn(){
-    //console.log(regiontracking);
-    //console.log(turncounter);
+    var didOwin = Owon();
+    if(didOwin){
+        setTimeout(function(){
+            alert("YOU WON!");
+            document.location.reload();
+        },20);
+    }
     if(turncounter==1){
         var keepzeroloop = true;
         while(keepzeroloop) {
@@ -126,7 +140,6 @@ function computerturn(){
     }
     if(sum>8){
         setTimeout(function(){
-
             alert("IT WAS A TIE!");
             document.location.reload();},20
         );
